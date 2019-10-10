@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .activated {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- class对象绑定 -->
+        <!-- <div @click="handleDiv" :class="{activated : isActivated}">
+
+        fdfdf
+       </div> -->
+
+        <!-- <div @click="handleDiv" :class="[activated,activatedOne]">
+
+            fdfdf
+           </div> -->
+
+        <!-- <div :style="styleObj" @click="handleDivClick">
+
+            fdfdf
+        </div> -->
+        <div :style="[styleObj,{fontSize:'12px'}]" @click="handleDivClick">
+
+                fdfdf
+            </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                activated: "",
+                activatedOne: "activatedOne",
+                styleObj:{
+                    color:"black"
+                }
+            },
+            methods: {
+                handleDiv: function () {
+                    //  this.isActivated =  !this.isActivated
+                    if (this.activated === "activated") {
+                        this.activated = ""
+                    } else {
+                        this.activated = "activated"
+                    }
+
+                },
+                handleDivClick:function(){
+                    this.styleObj.color =  this.styleObj.color === 'black' ? 'red':'black'
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
