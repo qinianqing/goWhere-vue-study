@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- vue复用页面上存在的dom,加key(页面上唯一的元素，利用了diff算法)可以解决这个问题,-->
+    <div v-if="show">
+
+    用户名： <input type="text" name="" id="" key="username">
+    </div>
+    <div v-else>
+        邮箱名: <input type="text" key="password">
+    </div>
+
+    </div>
+    <script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            message:'hello world',
+            show:'a'
+        }
+    })
+    </script>
+    
+</body>
+</html>
