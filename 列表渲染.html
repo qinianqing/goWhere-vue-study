@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 尽量不要用index作为key值,template不占空间 -->
+        <!-- <template v-for="(item,index) of list" :key="item.id">
+            <div>
+                {{item.title}}-{{index}}
+            </div>
+            <span>{{item.title}}</span>
+        </template> -->
+        <div v-for="(item,key,index) of userName">{{item}}----{{key}}===={{index}}</div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                // push、pop、shift、unshift、split、splice、reverse、sort
+                // 改变引用地址
+                list: [
+                    {
+                        id: '4235423dddd4',
+                        title: "hello"
+                    },
+                    {
+                        id: '42354234',
+                        title: "hello"
+                    },
+                    {
+                        id: '4235ss4234',
+                        title: "hello"
+                    },
+                    {
+                        id: '42354dsd234',
+                        title: "hello"
+                    },
+                    {
+                        id: '4ss2354234',
+                        title: "hello"
+                    }
+                ],
+                userName:{
+                    name:'dell',
+                    age:26,
+                    gender:'sex',
+                    sa:'sect'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
