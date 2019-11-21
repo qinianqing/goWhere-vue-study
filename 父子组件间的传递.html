@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+    <counter :count="0" @inc="handleAdd"></counter>
+    <counter :count="1"></counter>
+    <div>{{total}}</div>
+    </div>
+    <script>
+        // 子组件可以接受父组件传递的参数，但是不能修改,父组件通过属性形式传递到子组件，子组件通过事件传递到父组件，而且是单向数据流
+      var counter = {
+          props:['count'],
+          data:function(){
+               return{
+                number:this.count
+               }
+                
+          },
+          template: '<div @click="handleClick">{{number}}</div>',
+          methods:{
+            handleClick:function(){
+                this.number = this.number + 100 ;
+                this.$emit('inc',100)
+            }
+          }
+      }
+       var vm = new Vue({
+           el:'#root',
+           data:{
+             total:5
+           },
+           components: {
+            counter:counter
+           },
+           methods:{
+            handleAdd:function(step){
+                this.total += step
+            }
+           }
+       })
+    </script>
+</body>
+
+</html>
