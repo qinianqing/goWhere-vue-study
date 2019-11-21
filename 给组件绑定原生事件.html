@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 原生触发方法 -->
+    <child @click.native="handleWork"></child>
+
+    </div>
+    <script>
+        Vue.component('child',{
+            template:'<div> child</div>',
+            methods:{
+                childClick:function(){
+                    alert('dsd')
+                    this.$emit('click')
+                }
+            }
+        })
+        var vm  = new Vue({
+           el:'#root',
+           methods:{
+            handleWork:function(){
+                alert('click')
+            }
+           }
+        })
+    </script>
+</body>
+
+</html>
