@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- <table> -->
+
+        <!-- <tbody> --> -->
+        <!-- is 属性解决组件BUGw问题 -->
+        <!-- <tr is="row"></tr>
+         <tr is="row"></tr>
+         <tr is="row"></tr>
+
+       </tbody> 
+     </table> -->
+        <div ref='hello' @click="handClick">hello world</div>
+    </div>
+    <script>
+
+        // Vue.component('row',{
+        //     // 子组件必须是一个函数
+        //     data: function () {
+        //       return  {
+
+        //         content: 'this is row'  
+        //       } 
+        //     },
+        //     template:"<tr>{{content}}</td></tr>"
+        // })  
+        var vm = new Vue({
+
+            el: '#root',
+            methods: {
+                handClick: function () {
+                   alert(this.$refs.hello.innerHTML) 
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
