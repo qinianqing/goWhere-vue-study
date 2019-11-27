@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <child content="DELl"></child>
+        <child content="lle"></child>
+    </div>
+    <script>
+        Vue.prototype.bus = new Vue()
+
+        Vue.component('child', {
+            data: function () {
+                return {
+                    selfContent: this.content
+                }
+            },
+            props: {
+                content: String
+            },
+            template: '<div @click="handleClick">{{selfContent}}</div>',
+            methods: {
+                handleClick: function () {
+                    this.bus.$emit('change', this.selfContent)
+                }
+            },
+            mounted: function () {
+                var this_ = this;
+                this.bus.$on('change', function (smg) {
+                    this_.selfContent = smg
+                })
+            }
+
+        })
+        var vm = new Vue({
+            el: "#root"
+        })
+    </script>
+</body>
+
+</html>
